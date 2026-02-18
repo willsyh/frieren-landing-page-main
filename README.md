@@ -2,7 +2,7 @@
 
 <img width="1904" height="1071" alt="image" src="https://github.com/user-attachments/assets/6c0ca0a4-68b6-486a-ba52-9c67f339bbcc" />
 
-## Como inicializar
+## How to Run the Project
 
 
 ```
@@ -11,16 +11,17 @@ npm install
 ```
 npm run dev
 ```
-- A porta padrão para acessar é http://localhost:5173/
+- The default local server runs at: http://localhost:5173/
 
-## 🚀 Tem algum design pronto e precisa de uma desenvolvedora?
+## 🚀 Do You Have a Design Ready and Need a Developer?
 
-Oi! 👋 Atuo com desenvolvimento web fullstack e posso ser sua desenvolvedora, para tirar seus design do papel ou fazer um sistema completo.  
+Hi! 👋
+I work as a fullstack web developer and would love to help bring your designs to life or build a complete system for you.
 
-Se tiver interesse, é só me chamar:  
-📩 **geovana.matias1@gmail.com**
+If you're interested, feel free to reach out: 
+📩 **willsyh25@gmail.com**
 
-## Sobre o Template Vite
+## About the Vite Template
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
