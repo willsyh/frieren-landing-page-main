@@ -1,6 +1,6 @@
 # Frieren Landing Page - React + TypeScript + Vite
 
-<img src="https://github.com/willsyh/frieren-landing-page-main/issues/1" alt="deskripsi gambar" />
+<img src="https://github.com/willsyh/frieren-landing-page-main/issues/1](https://private-user-images.githubusercontent.com/200247824/559667440-2a90aebb-f720-4620-b78f-757449ce48b6.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzI4NjkzMTYsIm5iZiI6MTc3Mjg2OTAxNiwicGF0aCI6Ii8yMDAyNDc4MjQvNTU5NjY3NDQwLTJhOTBhZWJiLWY3MjAtNDYyMC1iNzhmLTc1NzQ0OWNlNDhiNi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMzA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDMwN1QwNzM2NTZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wOWQwZmVkY2VlMzU4MzdmNTMyZjgxNDViMzFiMzliNDhlOTQ1MGJiNmIyMWQ0YjdkNDNjMzg5OGNiOTFkMTA2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.8rGUJMMJ-G8TiLH9-HjkYoJk2nLrEeL0zSdK4idX5eU" alt="deskripsi gambar" />
 
 ## How to Run the Project
 
