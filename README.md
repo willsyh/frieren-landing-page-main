@@ -1,6 +1,6 @@
 # Frieren Landing Page - React + TypeScript + Vite
 
-![Screenshot](https://github.com/willsyh/frieren-landing-page-main/issues/1)
+<img src="https://github.com/user-attachments/assets/6c0ca0a4-68b6-486a-ba52-9c67f339bbcc" alt="deskripsi gambar" />
 
 ## How to Run the Project
 
