@@ -7,14 +7,14 @@ export default function SecaoCharacters() {
     const letters = t("Characters").split("");
 
   return(<>
-  <div className="bg-black gap-5 justify-center py-10">
+  <div className="bg-black gap-5 justify-center py-10 px-6">
     <div className="relative">
       {/* Background ungu di belakang tulisan */}
       <div className="absolute inset-0 flex justify-center items-end">
-        <div className="w-[370px] h-[65px] bg-gradient-to-t from-purple-600/30 to-transparent rounded-lg blur-sm"></div>
+        <div className="w-[200px] md:w-[370px] h-[40px] md:h-[65px] bg-gradient-to-t from-purple-600/30 to-transparent rounded-lg blur-sm"></div>
       </div>
       
-      <h2 id="characters" className="text-amber-50 text-7xl font-bold text-center relative z-10">
+      <h2 id="characters" className="text-amber-50 text-4xl md:text-7xl font-bold text-center relative z-10">
             {letters.map((letter, i) => (
               <motion.span
                 key={i}
@@ -34,7 +34,7 @@ export default function SecaoCharacters() {
       </h2>
     </div>
 
-    <div className="flex gap-3 justify-center py-20">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center py-10 md:py-20 max-w-7xl mx-auto">
     <CardCharacters
       name="Frieren"
       description={t('FrierenDesc')}

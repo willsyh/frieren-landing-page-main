@@ -20,29 +20,39 @@ const PhotoRow = ({
       const width = containerRef.current.offsetWidth;
       setContainerWidth(width);
 
-      const initialPositions = images.map((_, i) => i * 272); // largura + margin: 256 + 16
+      const isMobile = window.innerWidth < 768;
+      const imgWidth = isMobile ? 160 : 256;
+      const margin = 16;
+      const initialPositions = images.map((_, i) => i * (imgWidth + margin));
       setPositions(initialPositions);
     }
   }, [images]);
 
   // Animação contínua
   useEffect(() => {
-  const interval = setInterval(() => {
-    setPositions((prev) =>
-      prev.map((pos) => {
-        let newPos = direction === "left" ? pos - speed : pos + speed;
-        if (direction === "left" && newPos < -256) newPos = containerWidth;
-        if (direction === "right" && newPos > containerWidth) newPos = -256;
-        return newPos;
-      })
-    );
-  }, 16);
+    const interval = setInterval(() => {
+      setPositions((prev) =>
+        prev.map((pos) => {
+          let newPos = direction === "left" ? pos - speed : pos + speed;
+          // Use a variable width based on screen size for resetting position
+          const imgWidth = window.innerWidth < 768 ? 160 : 256;
+          if (direction === "left" && newPos < -imgWidth)
+            newPos = containerWidth;
+          if (direction === "right" && newPos > containerWidth)
+            newPos = -imgWidth;
+          return newPos;
+        }),
+      );
+    }, 16);
 
-  return () => clearInterval(interval);
-}, [containerWidth, direction, speed]);
+    return () => clearInterval(interval);
+  }, [containerWidth, direction, speed]);
 
   return (
-    <div ref={containerRef} className="relative w-full h-70 overflow-hidden">
+    <div
+      ref={containerRef}
+      className="relative w-full h-40 md:h-70 overflow-hidden mt-6"
+    >
       {images.map((src, i) => (
         <motion.img
           key={i}
@@ -50,14 +60,14 @@ const PhotoRow = ({
           initial={{ y: 50, opacity: 0, filter: "blur(8px)" }}
           alt={`Gallery image ${i}`}
           whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          className="w-60 h-full object-cover rounded-lg shadow-md absolute top-0"
+          className="w-40 md:w-60 h-full object-cover rounded-lg shadow-md absolute top-0"
           style={{ left: positions[i] }}
           transition={{
             delay: i * 0.1,
             duration: 0.6,
             type: "spring",
           }}
-          viewport={{ once: false, amount: 0.2 }} 
+          viewport={{ once: false, amount: 0.2 }}
         />
       ))}
     </div>

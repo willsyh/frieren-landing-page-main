@@ -36,8 +36,8 @@ export default function CardCharacters({
 
           {/* Status ou Tags */}
           <div className="mt-3 flex gap-2">
-            {tags.map((tag) => 
-            <span className="text-xs bg-white backdrop-blur-sm px-2 py-1 rounded-full border border-gray-200">
+            {tags.map((tag, index) => 
+            <span key={index} className="text-xs bg-white backdrop-blur-sm px-2 py-1 rounded-full border border-gray-200">
               {tag}
             </span>)}
           </div>

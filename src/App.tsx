@@ -214,7 +214,7 @@ function App() {
 
       {/* Music control area - fixed bottom-right */}
       {!isLoading && musicStarted && (
-        <div className="fixed bottom-6 right-6 z-40">
+        <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40">
           {/* Icon button (always visible). Clicking toggles panel. */}
           <button
             onClick={(e) => {
@@ -242,7 +242,7 @@ function App() {
                 variants={panelVariants}
                 transition={{ duration: 0.22 }}
                 onClick={(e) => e.stopPropagation()} // prevent panel clicks from bubbling
-                className="mt-3 bg-black/80 backdrop-blur-md border border-purple-600/30 rounded-lg p-3 shadow-lg flex items-center gap-3 min-w-[180px]"
+                className="mt-2 bg-black/80 backdrop-blur-md border border-purple-600/30 rounded-lg p-2 md:p-3 shadow-lg flex items-center gap-2 md:gap-3 min-w-[150px] md:min-w-[180px]"
               >
                 {/* Play/Pause */}
                 <button

@@ -1,21 +1,23 @@
 "use client";
-import {motion} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-import { useTranslation } from 'react-i18next';
-import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from "react-i18next";
+import { useState, useRef, useEffect } from "react";
+import { Menu, X as CloseIcon } from "lucide-react";
 
 const LANGUAGES = [
-  { code: 'en', label: 'EN', flag: '🇺🇸' },
-  { code: 'id', label: 'ID', flag: '🇮🇩' },
-  { code: 'ko', label: 'KO', flag: '🇰🇷' },
-  { code: 'ja', label: 'JA', flag: '🇯🇵' },
-  { code: 'zh', label: 'ZH', flag: '🇨🇳' },
+  { code: "en", label: "EN", flag: "🇺🇸" },
+  { code: "id", label: "ID", flag: "🇮🇩" },
+  { code: "ko", label: "KO", flag: "🇰🇷" },
+  { code: "ja", label: "JA", flag: "🇯🇵" },
+  { code: "zh", label: "ZH", flag: "🇨🇳" },
 ];
 
 export default function NavBar() {
   const { t, i18n } = useTranslation();
   const [currentLang, setCurrentLang] = useState(i18n.language);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const changeLanguage = (lng: string) => {
@@ -27,17 +29,20 @@ export default function NavBar() {
   // Close dropdown on outside click
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false);
       }
     }
     if (dropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     } else {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     }
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownOpen]);
   const navBarVariants = {
@@ -54,22 +59,51 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="relative w-full flex flex-col items-center justify-center -mt-15 py-1">
-      {/* Language Dropdown (top right) */}
-      <div className="absolute top-4 right-8 z-50" ref={dropdownRef}>
+    <nav className="relative w-full flex flex-col items-center justify-center md:-mt-15 py-1 z-50">
+      {/* Language Dropdown & Mobile Menu Toggle */}
+      <div
+        className="absolute top-4 right-4 md:right-8 z-50 flex items-center gap-2"
+        ref={dropdownRef}
+      >
         <button
           onClick={() => setDropdownOpen((open) => !open)}
           className="px-3 py-1 rounded-full text-sm font-medium bg-white/80 text-black shadow hover:bg-white/90 transition flex items-center gap-1 border border-white/60"
         >
-          {LANGUAGES.find(l => l.code === currentLang)?.flag || '🏳️'}
-          <span className="ml-1">{LANGUAGES.find(l => l.code === currentLang)?.label || currentLang.toUpperCase()}</span>
-          <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          {LANGUAGES.find((l) => l.code === currentLang)?.flag || "🏳️"}
+          <span className="hidden sm:inline ml-1">
+            {LANGUAGES.find((l) => l.code === currentLang)?.label ||
+              currentLang.toUpperCase()}
+          </span>
+          <svg
+            className="w-4 h-4 ml-1"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </button>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden p-2 rounded-full bg-white/80 text-black shadow hover:bg-white/90 transition border border-white/60"
+        >
+          {mobileMenuOpen ? (
+            <CloseIcon className="w-5 h-5" />
+          ) : (
+            <Menu className="w-5 h-5" />
+          )}
+        </button>
+
         {dropdownOpen && (
-          <div className="mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-1 min-w-[100px] animate-fade-in">
-            {LANGUAGES.filter(lng => lng.code !== currentLang).map(lng => (
+          <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-1 min-w-[100px] animate-fade-in">
+            {LANGUAGES.filter((lng) => lng.code !== currentLang).map((lng) => (
               <button
                 key={lng.code}
                 onClick={() => changeLanguage(lng.code)}
@@ -86,14 +120,14 @@ export default function NavBar() {
       {/* Logo di atas tengah */}
       <motion.img
         src="logo.webp"
-        className="h-16 mb-2"
+        className="h-12 md:h-16 mb-2 mt-2 md:mt-0"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0, transition: { delay: 1.5 } }}
       />
 
-      {/* Navbar Link */}
+      {/* Desktop Navbar Link */}
       <motion.ul
-        className="flex flex-row gap-5 px-8 py-2 rounded-full backdrop-blur-xs bg-white/40 shadow-xl font-medium text-white items-center border border-white/50"
+        className="hidden md:flex flex-row gap-5 px-8 py-2 rounded-full backdrop-blur-xs bg-white/40 shadow-xl font-medium text-white items-center border border-white/50"
         variants={navBarVariants}
         initial="hidden"
         animate="visible"
@@ -101,38 +135,80 @@ export default function NavBar() {
         <motion.li
           className="px-4 py-1 rounded-full cursor-pointer hover:bg-white/20 transition"
           variants={itemVariants}
-          transition={{delay: 2}}
+          transition={{ delay: 2 }}
         >
-          {t('Home')}
+          {t("Home")}
         </motion.li>
 
         <motion.li
           className="px-4 py-1 rounded-full cursor-pointer hover:bg-white/20 transition"
           variants={itemVariants}
-          transition={{delay: 2.5}}
+          transition={{ delay: 2.5 }}
         >
-          <a href="#gallery">{t('Gallery')}</a>
+          <a href="#gallery">{t("Gallery")}</a>
         </motion.li>
 
         <motion.li
           className="px-4 py-1 rounded-full cursor-pointer hover:bg-white/20 transition"
           variants={itemVariants}
-          transition={{delay: 3}}
+          transition={{ delay: 3 }}
         >
-          <a href="#characters">{t('Characters')}</a>
+          <a href="#characters">{t("Characters")}</a>
         </motion.li>
 
-        {/* Tambahan AMV di sini */}
         <motion.li
           className="px-4 py-1 rounded-full cursor-pointer hover:bg-white/20 transition"
           variants={itemVariants}
-          transition={{delay: 3.5}}
+          transition={{ delay: 3.5 }}
         >
-          <a href="#amv">{t('AMV')}</a>
+          <a href="#amv">{t("AMV")}</a>
         </motion.li>
       </motion.ul>
 
-      {/* End Language Switcher (now dropdown) */}
+      {/* Mobile Navbar Link */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden w-[90%] mt-4 bg-black/60 backdrop-blur-md rounded-2xl border border-white/20 overflow-hidden"
+          >
+            <ul className="flex flex-col items-center py-4 gap-4 text-white font-medium">
+              <li
+                className="w-full text-center py-2 hover:bg-white/10"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Home")}
+              </li>
+              <li
+                className="w-full text-center py-2 hover:bg-white/10"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <a href="#gallery" className="block w-full">
+                  {t("Gallery")}
+                </a>
+              </li>
+              <li
+                className="w-full text-center py-2 hover:bg-white/10"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <a href="#characters" className="block w-full">
+                  {t("Characters")}
+                </a>
+              </li>
+              <li
+                className="w-full text-center py-2 hover:bg-white/10"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <a href="#amv" className="block w-full">
+                  {t("AMV")}
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

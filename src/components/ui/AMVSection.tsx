@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X, Volume2, VolumeX, ArrowRight } from "lucide-react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 interface AMVVideo {
   id: string;
@@ -68,30 +68,6 @@ export default function AMVSection() {
       description: "by iva",
       duration: "00:12",
     },
-    {
-      id: "7",
-      title: "",
-      thumbnail: "", // atau .png sesuai format
-      videoUrl: "", // nama file video Anda
-      description: "",
-      duration: "",
-    },
-    {
-      id: "8",
-      title: "",
-      thumbnail: "",
-      videoUrl: "",
-      description: "",
-      duration: "",
-    },
-    {
-      id: "9",
-      title: "",
-      thumbnail: "",
-      videoUrl: "",
-      description: "",
-      duration: "",
-    },
   ];
 
   const openVideoModal = (video: AMVVideo) => {
@@ -119,10 +95,10 @@ export default function AMVSection() {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Title with Purple Background */}
-        <div className="relative mb-16">
+        <div className="relative mb-10 md:mb-16">
           {/* Background ungu di belakang tulisan AMV Collection */}
           <div className="absolute inset-0 flex justify-center items-center">
-            <div className="w-[460px] h-[40px] bg-gradient-to-t from-purple-600/20 to-purple-400/10 rounded-lg blur-sm"></div>
+            <div className="w-[280px] md:w-[460px] h-[30px] md:h-[40px] bg-gradient-to-t from-purple-600/20 to-purple-400/10 rounded-lg blur-sm"></div>
           </div>
           <motion.div
             initial={{ opacity: 0, y: -50 }}
@@ -131,11 +107,11 @@ export default function AMVSection() {
             viewport={{ once: false }}
             className="text-center relative z-10"
           >
-            <h2 className="text-6xl font-bold text-amber-50 mb-4 relative z-20">
-              {t('AMVCollection')}
+            <h2 className="text-4xl md:text-6xl font-bold text-amber-50 mb-4 relative z-20">
+              {t("AMVCollection")}
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto relative z-20">
-              {t('AMVDescription')}
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto relative z-20 px-4">
+              {t("AMVDescription")}
             </p>
           </motion.div>
         </div>
@@ -210,7 +186,7 @@ export default function AMVSection() {
             className="group bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
           >
             <span className="flex items-center gap-3">
-              {showAll ? t('ShowLess') : t('SeeAllAMVs')}
+              {showAll ? t("ShowLess") : t("SeeAllAMVs")}
               <ArrowRight
                 className={`w-5 h-5 transition-transform duration-300 ${showAll ? "rotate-180" : "group-hover:translate-x-1"}`}
               />

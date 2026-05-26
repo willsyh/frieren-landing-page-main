@@ -8,14 +8,14 @@ export default function SecaoGaleria() {
 
   return (
     <>
-      <div className="w-full h-screen bg-black flex flex-col text-center pt-25">
+      <div className="w-full min-h-screen bg-black flex flex-col text-center pt-20 md:pt-25">
         <div className="relative">
           {/* Background ungu di belakang tulisan */}
           <div className="absolute inset-0 flex justify-center items-end">
-            <div className="w-[255px] h-[65px] bg-gradient-to-t from-purple-600/30 to-transparent rounded-lg blur-sm"></div>
+            <div className="w-[150px] md:w-[255px] h-[40px] md:h-[65px] bg-gradient-to-t from-purple-600/30 to-transparent rounded-lg blur-sm"></div>
           </div>
-          
-          <h2 id="gallery" className="text-amber-50 text-7xl font-bold text-center relative z-10">
+
+          <h2 id="gallery" className="text-amber-50 text-4xl md:text-7xl font-bold text-center relative z-10">
             {letters.map((letter, i) => (
               <motion.span
                 key={i}
@@ -36,9 +36,9 @@ export default function SecaoGaleria() {
             ))}
           </h2>
         </div>
-        
-        <p className="text-white font-bold">@Yoovai</p>
-        <AssimetricPhotos/>
+
+        <p className="text-white font-bold mt-2">@YooWill</p>
+        <AssimetricPhotos />
       </div>
     </>
   );
