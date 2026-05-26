@@ -1,4 +1,3 @@
-import { config } from "@/components/config";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -10,13 +9,10 @@ export function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type GroupBy<T, K extends keyof T> = Record<string, T[]>;
-
 export function groupBy<T, K extends keyof T>(
   array: T[],
   key: K
-): GroupBy<T, K> {
+): Record<string, T[]> {
   return array.reduce((acc, item) => {
     const keyValue = String(item[key]);
     if (!acc[keyValue]) {
@@ -24,11 +20,11 @@ export function groupBy<T, K extends keyof T>(
     }
     acc[keyValue].push(item);
     return acc;
-  }, {} as GroupBy<T, K>);
+  }, {} as Record<string, T[]>);
 }
 
 export function absoluteUrl(path: string) {
   return process.env.NODE_ENV === "development"
     ? `http://localhost:3000${path}`
-    : `https://${config.appUrl}${path}`;
+    : `https://example.com${path}`;
 }

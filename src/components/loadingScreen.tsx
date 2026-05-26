@@ -3,9 +3,10 @@ import './LoadingScreen.css';
 
 interface LoadingScreenProps {
   onComplete: () => void;
+  onUserInteraction: () => void;
 }
 
-const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
+const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete, onUserInteraction }) => {
   const [isExiting, setIsExiting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
 
@@ -39,6 +40,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         onComplete();
       }, 800);
     }
+    onUserInteraction();
   };
 
   if (isComplete) return null;
