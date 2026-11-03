@@ -37,7 +37,7 @@ export default function SecaoGaleria() {
           </h2>
         </div>
 
-        <p className="text-white font-bold mt-2">@YooWill</p>
+        <p className="text-white font-bold mt-2">@willsya_</p>
         <AssimetricPhotos />
       </div>
     </>

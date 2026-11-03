@@ -1,92 +1,107 @@
-# Frieren Landing Page - React + TypeScript + Vite
+<div align="center">
 
-<img width="1904" height="1071" alt="image" src="https://github.com/willsyh/frieren-landing-page-main/issues/1#issuecomment-4015886278" />
+<img src="public/logo.webp" alt="Frieren logo" width="320" />
 
-## How to Run the Project
+# ✨ Frieren: Beyond Journey's End — Landing Page
 
+*A fan-made, animated landing page inspired by the anime **Sousou no Frieren**.*
 
-```
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-0055FF?logo=framer&logoColor=white)](https://motion.dev/)
+[![i18next](https://img.shields.io/badge/i18next-5_languages-26A69A?logo=i18next&logoColor=white)](https://www.i18next.com/)
+
+<img src="public/background.jpeg" alt="Frieren landing page preview" width="100%" />
+
+</div>
+
+---
+
+## 🌸 Features
+
+| | Feature | Description |
+|---|---|---|
+| ⏳ | **Loading screen** | Animated intro before the page is revealed |
+| 🎵 | **Background music** | Built-in player with play/pause, mute and volume, with autoplay handling across browsers |
+| 🖼️ | **Gallery** | Asymmetric photo grid with smooth animations |
+| 🧙 | **Characters** | Cards for Frieren, Fern and Stark |
+| 🎬 | **AMV section** | Fan-made music videos with thumbnails |
+| 🌍 | **Multi-language** | English, Bahasa Indonesia, 한국어, 日本語 and 中文 |
+| 📱 | **Responsive** | Looks good on desktop and mobile |
+
+## 🛠️ Tech Stack
+
+- **[React 19](https://react.dev/)** + **[TypeScript](https://www.typescriptlang.org/)** — UI and type safety
+- **[Vite 7](https://vite.dev/)** — fast dev server and build
+- **[Tailwind CSS 4](https://tailwindcss.com/)** — styling
+- **[Framer Motion](https://motion.dev/)** — animations
+- **[Radix UI](https://www.radix-ui.com/)** + **[Lucide](https://lucide.dev/)** — accessible components and icons
+- **[i18next](https://www.i18next.com/)** — translations
+
+## 🚀 Getting Started
+
+**Requirements:** [Node.js](https://nodejs.org/) 20 or newer.
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/willsyh/frieren-landing-page-main.git
+cd frieren-landing-page-main
+
+# 2. Install dependencies
 npm install
-```
-```
+
+# 3. Start the dev server
 npm run dev
 ```
-- The default local server runs at: http://localhost:5173/
 
-## 🚀 Do You Have a Design Ready and Need a Developer?
+Then open **http://localhost:5173** in your browser.
 
-Hi! 👋
-I work as a fullstack web developer and would love to help bring your designs to life or build a complete system for you.
+### Available Scripts
 
-If you're interested, feel free to reach out: 
-📩 **willsyh25@gmail.com**
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start the local dev server |
+| `npm run build` | Type-check and build for production into `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
 
-## About the Vite Template
+## 📁 Project Structure
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+frieren-landing-page-main/
+├── public/              # Images, AMV videos, thumbnails, music
+├── src/
+│   ├── components/
+│   │   ├── loadingScreen.tsx
+│   │   └── ui/          # NavBar, Banner, Gallery, Characters, AMV, Music player
+│   ├── lib/utils.ts
+│   ├── i18n.ts          # Translations (en, id, ko, ja, zh)
+│   ├── App.tsx
+│   └── main.tsx
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🌍 Adding a Language
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Open [`src/i18n.ts`](src/i18n.ts) and add a new entry to `resources` (copy the `en` block and translate it).
+2. Add the language to the language picker in [`src/components/ui/NavBar.tsx`](src/components/ui/NavBar.tsx).
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 💼 Need a Developer?
+
+Hi! 👋 I'm a fullstack web developer. If you have a design ready, or need a complete system built, I'd love to help.
+
+📩 **[willsyh25@gmail.com](mailto:willsyh25@gmail.com)**
+
+## ⚠️ Disclaimer
+
+This is a non-commercial fan project. *Frieren: Beyond Journey's End* and all related characters, images and music belong to their respective owners (Kanehito Yamada, Tsukasa Abe, Shogakukan and Madhouse).
+
+<div align="center">
+
+---
+
+Made with 💜 by [willsyh](https://github.com/willsyh) · If you like it, give it a ⭐
+
+</div>
